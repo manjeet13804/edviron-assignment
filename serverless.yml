@@ -1,0 +1,22 @@
+service: Edviron
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stage: dev
+
+functions:
+  api:
+    handler: index.handler
+    events:
+      - httpApi: '*'
+
+
+plugins:
+  - serverless-offline
+  - serverless-dotenv-plugin
+
+custom:
+  serverless-offline:
+    httpPort: 4000
